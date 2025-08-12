@@ -1,0 +1,33 @@
+#container {
+    width: fit-content;
+    border: 2px solid black;
+}
+
+.chessbox {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+    font-size: 70px; 
+    text-align: center;
+    line-height: 80px; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); 
+    cursor: grab;
+}
+
+.chessbox:hover {
+    border: 3px solid red;
+}
+
+.black {
+    background-color: black;
+    color: white; 
+}
+
+.white {
+    background-color: white;
+    color: black;
+}
+
+.row {
+    display: flex;
+}

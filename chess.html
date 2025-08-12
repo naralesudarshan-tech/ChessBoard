@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <link rel="stylesheet" href="chess.css">
+</head>
+
+<body>
+    <div id="container">
+        <!-- Row 1 (Black Major Pieces) -->
+        <div class="row">
+            <div class="chessbox black" draggable="true">&#9820;</div>
+            <div class="chessbox white" draggable="true">&#9822;</div>
+            <div class="chessbox black" draggable="true">&#9821;</div>
+            <div class="chessbox white" draggable="true">&#9819;</div>
+            <div class="chessbox black" draggable="true">&#9818;</div>
+            <div class="chessbox white" draggable="true">&#9821;</div>
+            <div class="chessbox black" draggable="true">&#9822;</div>
+            <div class="chessbox white" draggable="true">&#9820;</div>
+        </div>
+        <!-- Row 2 (Black Pawns) -->
+        <div class="row">
+            <div class="chessbox white" draggable="true">&#9823;</div>
+            <div class="chessbox black" draggable="true">&#9823;</div>
+            <div class="chessbox white" draggable="true">&#9823;</div>
+            <div class="chessbox black" draggable="true">&#9823;</div>
+            <div class="chessbox white" draggable="true">&#9823;</div>
+            <div class="chessbox black" draggable="true">&#9823;</div>
+            <div class="chessbox white" draggable="true">&#9823;</div>
+            <div class="chessbox black" draggable="true">&#9823;</div>
+        </div>
+        <!-- Empty Rows -->
+        <div class="row">
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+        </div>
+        <div class="row">
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+        </div>
+        <div class="row">
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+        </div>
+        <div class="row">
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+            <div class="chessbox white"></div>
+            <div class="chessbox black"></div>
+        </div>
+        <!-- Row 7 (White Pawns) -->
+        <div class="row">
+            <div class="chessbox black" draggable="true">&#9817;</div>
+            <div class="chessbox white" draggable="true">&#9817;</div>
+            <div class="chessbox black" draggable="true">&#9817;</div>
+            <div class="chessbox white" draggable="true">&#9817;</div>
+            <div class="chessbox black" draggable="true">&#9817;</div>
+            <div class="chessbox white" draggable="true">&#9817;</div>
+            <div class="chessbox black" draggable="true">&#9817;</div>
+            <div class="chessbox white" draggable="true">&#9817;</div>
+        </div>
+        <!-- Row 8 (White Major Pieces) -->
+        <div class="row">
+            <div class="chessbox white" draggable="true">&#9814;</div>
+            <div class="chessbox black" draggable="true">&#9816;</div>
+            <div class="chessbox white" draggable="true">&#9815;</div>
+            <div class="chessbox black" draggable="true">&#9813;</div>
+            <div class="chessbox white" draggable="true">&#9812;</div>
+            <div class="chessbox black" draggable="true">&#9815;</div>
+            <div class="chessbox white" draggable="true">&#9816;</div>
+            <div class="chessbox black" draggable="true">&#9814;</div>
+        </div>
+    </div>
+
+    <script>
+        let draggedPiece = null;
+
+        document.querySelectorAll(".chessbox").forEach(box => {
+            // When dragging starts
+            box.addEventListener("dragstart", function () {
+                if (this.innerHTML.trim() !== "") {
+                    draggedPiece = this.innerHTML;
+                    this.innerHTML = "";
+                }
+            });
+
+            // Allow dropping
+            box.addEventListener("dragover", function (e) {
+                e.preventDefault();
+            });
+
+            // Drop event
+            box.addEventListener("drop", function (e) {
+                e.preventDefault();
+                if (draggedPiece) {
+                    this.innerHTML = draggedPiece;
+                    draggedPiece = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
